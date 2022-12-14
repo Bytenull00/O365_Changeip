@@ -25,7 +25,7 @@ apt install libproxychains4
 ## Usage 
 
 ```
-chmod +x O365_changeip.sh.sh
+
 ./O365_changeip.sh.sh <MAIL_FILE> <PASSWORD>
 
 MAIL_FILE = File with email addresses
