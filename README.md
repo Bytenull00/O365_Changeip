@@ -25,8 +25,7 @@ apt install libproxychains4
 ## Usage 
 
 ```
-
-./O365_changeip.sh.sh <MAIL_FILE> <PASSWORD>
+./O365_changeip.sh <MAIL_FILE> <PASSWORD>
 
 MAIL_FILE = File with email addresses
 PASSWORD = Password to spray for each email of the MAIL_FILE file
