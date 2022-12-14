@@ -29,8 +29,6 @@ help(){
 TMP_FILE="/tmp/tmp_mail.$$.tmp" #archivo con correos temporales
 MAIL_FILE="$1"
 PASSWORD="$2"
-#MAIL_FILE=correos_total.txt	#archivo con todos los correos a probar
-#PASSWORD='Peru2022$$'		    #contraseña a rociar
 
 if [ -z "$MAIL_FILE" ]; then
         echo "Error: Provide me with a mail file"
